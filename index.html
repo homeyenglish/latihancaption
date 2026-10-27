@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Soal Interaktif: Caption Text (Kelas XI)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-md shadow-indigo-100">
+          <i class="ph-bold ph-image-square text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-base font-bold text-slate-900 leading-tight">Caption Mastery Quiz (50 Soal)</h1>
+          <p class="text-xs font-medium text-slate-500">Bahasa Inggris Kelas XI • SMA/SMK</p>
+        </div>
+      </div>
+
+      <!-- Quick Action / Status -->
+      <div class="flex items-center space-x-2">
+        <button id="guide-modal-btn" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5">
+          <i class="ph-bold ph-book-open-text text-base"></i>
+          <span class="hidden sm:inline">Ringkasan Materi</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- LOGIN / AUTHENTICATION SCREEN -->
+    <section id="screen-login" class="max-w-lg mx-auto my-4 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-inner">
+          <i class="ph-bold ph-identification-card text-2xl"></i>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Portal Masuk Ujian</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Silakan isi identitas diri sebelum memulai latihan Caption Text.</p>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <!-- Input Nama Siswa -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5" for="login-name">
+            Nama Lengkap Siswa <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i class="ph-bold ph-user text-base"></i>
+            </span>
+            <input type="text" id="login-name" required placeholder="Contoh: Muhammad Rizky Pratama"
+              class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm bg-slate-50/50">
+          </div>
+        </div>
+
+        <!-- Pilihan Kelas -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+            Pilih Kelas <span class="text-rose-500">*</span>
+          </label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="cursor-pointer border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 hover:bg-slate-50 transition-all class-radio-label">
+              <input type="radio" name="student-class" value="XI A" checked class="text-indigo-600 focus:ring-indigo-500">
+              <span class="text-sm font-bold text-slate-800">XI A</span>
+            </label>
+            <label class="cursor-pointer border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 hover:bg-slate-50 transition-all class-radio-label">
+              <input type="radio" name="student-class" value="XI B" class="text-indigo-600 focus:ring-indigo-500">
+              <span class="text-sm font-bold text-slate-800">XI B</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Syarat & Ketentuan -->
+        <div class="p-3 bg-slate-50 border border-slate-100 rounded-xl text-xs text-slate-600 space-y-1">
+          <div class="flex items-center gap-1.5 font-semibold text-slate-800">
+            <i class="ph-fill ph-info text-indigo-600"></i> Ketentuan Ujian:
+          </div>
+          <p>• Total <strong>50 butir soal</strong> pilihan ganda (A-E).</p>
+          <p>• Alokasi waktu pengerjaan: <strong>60 menit</strong>.</p>
+          <p>• Hasil nilai dan identitas akan otomatis dikirimkan ke <strong>Google Sheet</strong> guru melalui Google Apps Script.</p>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base shadow-lg shadow-indigo-200 transition-all transform active:scale-[0.99] flex items-center justify-center gap-2">
+          <span>Masuk & Mulai Ujian</span>
+          <i class="ph-bold ph-arrow-right"></i>
+        </button>
+      </form>
+    </section>
+
+    <!-- QUIZ / ACTIVE EXAM SCREEN -->
+    <section id="screen-quiz" class="hidden">
+      <!-- Quiz Status Bar -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-4 mb-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <div class="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-lg text-sm font-bold border border-indigo-100" id="badge-question-num">
+            Soal 1 / 50
+          </div>
+          <div class="text-xs sm:text-sm text-slate-500 font-medium">
+            Siswa: <span class="text-slate-900 font-bold" id="badge-student-info">-</span>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <!-- Timer -->
+          <div class="flex items-center space-x-2 bg-rose-50 text-rose-700 border border-rose-200 px-3.5 py-1.5 rounded-xl font-bold text-sm">
+            <i class="ph-bold ph-clock"></i>
+            <span id="timer-display">60:00</span>
+          </div>
+
+          <!-- Finish Early Button -->
+          <button id="submit-quiz-btn" class="text-xs sm:text-sm font-bold text-white bg-slate-800 hover:bg-slate-900 px-4 py-2 rounded-xl transition-all">
+            Kumpulkan Jawaban
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Column: Question & Options (8 cols) -->
+        <div class="lg:col-span-8 flex flex-col space-y-6">
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+
+            <!-- Context visual / media block -->
+            <div id="media-container" class="mb-6 rounded-2xl overflow-hidden border border-slate-100 bg-slate-900/5">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Question Prompt -->
+            <div class="mb-6">
+              <span id="question-type-tag" class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md mb-2 inline-block">
+                Tipe Soal
+              </span>
+              <h3 id="question-text" class="text-base sm:text-lg font-bold text-slate-900 leading-snug mt-1">
+                Pertanyaan akan dimuat di sini...
+              </h3>
+            </div>
+
+            <!-- Options Grid -->
+            <div id="options-container" class="space-y-3">
+              <!-- Populated via Javascript -->
+            </div>
+          </div>
+
+          <!-- Bottom Navigation controls -->
+          <div class="flex items-center justify-between gap-3">
+            <button id="prev-btn" class="px-5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 font-semibold text-slate-700 text-sm rounded-xl transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+              <i class="ph-bold ph-caret-left"></i>
+              <span>Sebelumnya</span>
+            </button>
+            <div class="flex items-center gap-2">
+              <button id="flag-btn" class="px-4 py-2.5 bg-white border border-slate-200 hover:border-amber-400 text-slate-600 hover:text-amber-600 font-semibold text-sm rounded-xl transition-all flex items-center gap-2">
+                <i class="ph-bold ph-bookmark-simple" id="flag-icon"></i>
+                <span class="hidden sm:inline">Ragu-ragu</span>
+              </button>
+              <button id="next-btn" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-indigo-100 flex items-center gap-2">
+                <span>Selanjutnya</span>
+                <i class="ph-bold ph-caret-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Question Navigator / Number Palette (4 cols) -->
+        <div class="lg:col-span-4">
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm sticky top-24">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+              <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <i class="ph-bold ph-squares-four text-indigo-600"></i>
+                Navigasi Soal (1 - 50)
+              </h4>
+              <span id="answered-stat" class="text-xs font-semibold text-slate-500">0/50 Terjawab</span>
+            </div>
+
+            <!-- 50 grid numbers -->
+            <div id="palette-grid" class="grid grid-cols-5 gap-2 max-h-[350px] overflow-y-auto pr-1">
+              <!-- Dynamically rendered 1 to 50 -->
+            </div>
+
+            <!-- Legend -->
+            <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-2.5 text-[11px] font-medium text-slate-500">
+              <div class="flex items-center gap-1">
+                <div class="w-3 h-3 rounded bg-indigo-600"></div>
+                <span>Aktif</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <div class="w-3 h-3 rounded bg-emerald-500"></div>
+                <span>Dijawab</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <div class="w-3 h-3 rounded bg-amber-400"></div>
+                <span>Ragu</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <div class="w-3 h-3 rounded bg-slate-100 border border-slate-200"></div>
+                <span>Belum</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESULT & REVIEW SCREEN -->
+    <section id="screen-result" class="hidden">
+      <!-- Result Scorecard -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm mb-8 text-center max-w-4xl mx-auto">
+        <div id="result-badge" class="w-20 h-20 rounded-2xl mx-auto flex items-center justify-center text-3xl mb-4 shadow-md">
+          <!-- Icon dynamic -->
+        </div>
+        <h2 id="result-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-1">Hasil Evaluasi</h2>
+        <p id="result-greeting" class="text-slate-600 text-sm mb-4">Rekapitulasi pengerjaan kuis Caption Text Kelas XI.</p>
+
+        <!-- Status Pengiriman Nilai ke Spreadsheet -->
+        <div class="max-w-md mx-auto mb-6">
+          <div id="webscript-sync-status" class="p-3.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-indigo-50 text-indigo-700 border border-indigo-200">
+            <i class="ph-bold ph-spinner animate-spin text-base"></i>
+            <span>Menyimpan nilai ke Spreadsheet...</span>
+          </div>
+        </div>
+
+        <!-- Stats Counter -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
+          <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl">
+            <span class="text-xs font-semibold text-slate-500">Skor Akhir</span>
+            <div class="text-3xl font-black text-indigo-600 mt-1" id="stat-score">0</div>
+            <span class="text-[11px] text-slate-400">Skala 0 - 100</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl">
+            <span class="text-xs font-semibold text-slate-500">Jawaban Benar</span>
+            <div class="text-3xl font-black text-emerald-600 mt-1" id="stat-correct">0</div>
+            <span class="text-[11px] text-slate-400">dari 50 soal</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl">
+            <span class="text-xs font-semibold text-slate-500">Jawaban Salah</span>
+            <div class="text-3xl font-black text-rose-500 mt-1" id="stat-wrong">0</div>
+            <span class="text-[11px] text-slate-400">perlu diperbaiki</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl">
+            <span class="text-xs font-semibold text-slate-500">Waktu Terpakai</span>
+            <div class="text-2xl font-black text-slate-800 mt-1.5" id="stat-time">00:00</div>
+            <span class="text-[11px] text-slate-400">durasi pengerjaan</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="#review-section" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2 text-sm">
+            <i class="ph-bold ph-file-magnifying-glass"></i>
+            <span>Lihat Kunci & Pembahasan</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- DETAILED REVIEW SECTION -->
+      <div id="review-section" class="max-w-4xl mx-auto">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-clipboard-text text-indigo-600"></i>
+            Kunci Jawaban & Pembahasan Lengkap (50 Soal)
+          </h3>
+          <span class="text-xs font-semibold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Kelas XI A / XI B</span>
+        </div>
+
+        <div id="review-list" class="space-y-6">
+          <!-- Populated dynamically with all 50 questions & answers -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: Pengaturan Google Apps Script Webscript URL -->
+  <div id="webscript-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+        <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+          <i class="ph-bold ph-link-simple-horizontal text-indigo-600"></i>
+          Konfigurasi Webhook Google Spreadsheet
+        </h3>
+        <button id="close-webscript-modal" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all">
+          <i class="ph-bold ph-x text-sm"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs text-slate-600">
+        <p>
+          Tempelkan URL Web App Google Apps Script Anda (berakhiran <code>/exec</code>). Semua data pengerjaan ujian siswa akan dikirimkan otomatis ke spreadsheet tujuan:
+        </p>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">URL Webhook / Web App Exec:</label>
+          <input type="url" id="webscript-url-input" placeholder="https://script.google.com/macros/s/AKfycb.../exec"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs font-mono">
+        </div>
+
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5 font-sans">
+          <div class="font-bold text-slate-800 flex items-center justify-between">
+            <span class="flex items-center gap-1">
+              <i class="ph-bold ph-code text-indigo-600"></i> Skrip Google Apps Script (Apps Script Editor):
+            </span>
+            <span class="text-[10px] text-slate-500 bg-slate-200 px-1.5 py-0.5 rounded">Deploy as Web App</span>
+          </div>
+          <pre class="bg-slate-900 text-emerald-400 p-2.5 rounded-lg text-[10px] overflow-x-auto select-all leading-relaxed">
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000); // Menghindari tabrakan saat banyak siswa submit bersamaan
+
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    
+    // Parsing data baik berupa JSON string maupun Form URL Encoded
+    var data;
+    if (e && e.postData && e.postData.contents) {
+      try {
+        data = JSON.parse(e.postData.contents);
+      } catch (err) {
+        data = e.parameter;
+      }
+    } else if (e && e.parameter) {
+      data = e.parameter;
+    } else {
+      data = {
+        name: "Test Manual",
+        studentClass: "XI A",
+        score: 100,
+        correctCount: 50,
+        wrongCount: 0,
+        duration: "0m 0s"
+      };
+    }
+
+    // Menyimpan baris: [Tanggal/Waktu, Nama, Kelas, Skor, Benar, Salah, Durasi]
+    sheet.appendRow([
+      new Date(), 
+      data.name, 
+      data.studentClass, 
+      data.score, 
+      data.correctCount, 
+      data.wrongCount, 
+      data.duration
+    ]);
+
+    return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// Fungsi tes manual untuk memastikan sheet bisa ditulisi tanpa error:
+function testSheet() {
+  doPost(null);
+}</pre>
+          <div class="text-[10px] text-slate-500 leading-normal">
+            *<strong>Catatan Penting:</strong> Jangan tekan tombol ▶️ Run pada <code>doPost</code> di Apps Script (karena pasti menghasilkan error <code>undefined postData</code>). Untuk tes manual dari editor, pilih dan jalankan fungsi <code>testSheet</code>.
+            <br>
+            *Saat <strong>Deploy > New deployment</strong>: pilih <strong>Web app</strong>, atur <em>Execute as: Me</em>, dan <em>Who has access: Anyone</em>.
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 flex justify-end gap-2">
+        <button id="save-webscript-btn" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-md shadow-indigo-100">
+          <i class="ph-bold ph-floppy-disk"></i>
+          <span>Simpan URL Webhook</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Ringkasan Materi Caption Text -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200">
+      <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+        <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+          <i class="ph-fill ph-lightbulb text-amber-500 text-lg"></i>
+          Rangkuman Materi: Caption Text (Grade 11)
+        </h3>
+        <button id="close-modal-btn" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all">
+          <i class="ph-bold ph-x text-sm"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-4 text-sm text-slate-600 leading-relaxed">
+        <div class="p-4 bg-indigo-50/70 rounded-2xl border border-indigo-100 text-slate-800">
+          <h4 class="font-bold text-indigo-900 mb-1 text-sm">1. Definisi & Fungsi Sosial</h4>
+          <p class="text-xs text-indigo-950">
+            <strong>Caption text</strong> adalah teks singkat yang menyertai gambar, foto, grafik, tabel, atau video guna memberikan konteks, identitas, waktu, dan keterangan pelengkap yang tidak dapat langsung diketahui secara utuh dari visual saja.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+          <h4 class="font-bold text-slate-900 mb-1.5 text-sm">2. Jenis-Jenis Caption Utama:</h4>
+          <ul class="list-disc list-inside space-y-1 text-xs text-slate-700">
+            <li><strong>Identification Bar:</strong> Menyebutkan siapa subjek dalam gambar (*Who*).</li>
+            <li><strong>Cutline:</strong> Menyebutkan siapa di dalam foto dan apa aksinya (*Who & What*).</li>
+            <li><strong>Summary:</strong> Memuat unsur lengkap 5W+1H (*Who, What, Where, When, Why, How*).</li>
+            <li><strong>Expanded:</strong> Format paling lengkap: 5W+1H disertai kalimat kedua berisikan latar belakang atau kutipan narasumber.</li>
+            <li><strong>Quote:</strong> Kutipan perkataan narasumber atau tokoh yang relevan dengan pesan gambar.</li>
+            <li><strong>Group Identification:</strong> Mengidentifikasi nama-nama beberapa orang dalam gambar dengan orientasi spasial (*misal: left to right*).</li>
+          </ul>
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+          <h4 class="font-bold text-slate-900 mb-1.5 text-sm">3. Kaidah Kebahasaan (Language Features):</h4>
+          <ul class="list-disc list-inside space-y-1 text-xs text-slate-700">
+            <li>Kalimat pembuka (*lead*) memakai <strong>Simple Present Tense</strong> agar terkesan terjadi saat visual disaksikan.</li>
+            <li>Latar belakang atau riwayat kejadian sebelumnya diungkapkan dalam <strong>Simple Past Tense</strong>.</li>
+            <li>Memuat <strong>Prepositional Phrases</strong> keterangan tempat dan waktu secara spesifik.</li>
+            <li>Memuat <strong>Photo Credit / Byline</strong> di akhir caption.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="px-6 py-3 bg-slate-50 border-t border-slate-100 text-right">
+        <button id="modal-ok-btn" class="px-5 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-700 transition-all">
+          Saya Mengerti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Alert Modal (No window.alert) -->
+  <div id="custom-alert" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl text-center border border-slate-100">
+      <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3">
+        <i class="ph-bold ph-warning text-xl"></i>
+      </div>
+      <h4 id="alert-title" class="font-bold text-slate-900 text-base mb-1">Pemberitahuan</h4>
+      <p id="alert-msg" class="text-xs text-slate-600 mb-5">Pesan dialog interaktif.</p>
+      <div class="flex justify-center gap-3">
+        <button id="alert-cancel-btn" class="hidden px-4 py-2 bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-200 transition-all">Batal</button>
+        <button id="alert-confirm-btn" class="px-5 py-2 bg-indigo-600 text-white font-bold text-xs rounded-xl hover:bg-indigo-700 transition-all">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-white border-t border-slate-200 mt-auto py-6 text-center text-xs text-slate-500">
+    <p>Media Pembelajaran Interaktif Bahasa Inggris • Materi Caption Text Kelas XI (XIA & XIB)</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // 50 SOAL CAPTION TEXT KELAS XI (BEGINNER - INTERMEDIATE)
+    const questions = [
+      {
+        id: 1,
+        topic: "Definisi & Fungsi Sosial",
+        type: "Multiple Choice",
+        question: "What is the primary function of a caption text accompanying a photograph in a newspaper or digital article?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Definition Concept",
+          headline: "Visual + Written Context",
+          sub: "Understanding why photographs need textual accompaniment."
+        },
+        options: [
+          "To entertain readers with funny fictional stories.",
+          "To provide context and clarity about what is shown in the image that is not immediately obvious.",
+          "To replace the headline of an entire article completely.",
+          "To describe every single pixel and color code of the photograph.",
+          "To present an argumentative thesis against the photographer."
+        ],
+        answer: 1,
+        explanation: "Fungsi utama caption adalah memberikan konteks, identitas, dan penjelasan tentang foto/grafik yang tidak serta merta tampak jelas hanya dari melihat visualnya."
+      },
+      {
+        id: 2,
+        topic: "Struktur & Jenis Caption",
+        type: "Identification",
+        question: "Read the caption: 'President Joko Widodo waves to spectators during the Independence Day ceremony in Nusantara, East Kalimantan, on August 17.' Which type of caption is this?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "National News",
+          source: "Photo: Antara News / Handout",
+          visualText: "A high-ranking official waving gracefully to crowds from a formal podium with national flags in the background."
+        },
+        options: [
+          "Identification Bar",
+          "Quote Caption",
+          "Cutline Caption",
+          "Summary Caption",
+          "Expanded Caption"
+        ],
+        answer: 2,
+        explanation: "Cutline caption menyebutkan siapa orang dalam foto (*Who*) dan apa yang sedang dilakukannya (*What*), tanpa uraian latar belakang yang panjang."
+      },
+      {
+        id: 3,
+        topic: "Jenis Caption",
+        type: "Identification",
+        question: "A photo shows only a portrait of Albert Einstein with the caption below: 'Albert Einstein (1879–1955).' This kind of caption is categorized as...",
+        mediaType: "quote-box",
+        mediaContent: {
+          author: "Historical Archive",
+          quoteText: "[Portrait of Scientist] — 'Albert Einstein (1879–1955)'"
+        },
+        options: [
+          "Summary",
+          "Expanded",
+          "Identification Bar",
+          "Story Caption",
+          "Editorial"
+        ],
+        answer: 2,
+        explanation: "Identification Bar adalah caption paling ringkas yang hanya memuat nama/identitas subjek pada gambar."
+      },
+      {
+        id: 4,
+        topic: "Analisis 5W+1H",
+        type: "Comprehension",
+        question: "Consider this caption: 'Students of SMAN 1 Jakarta clean up plastic waste along Ancol Beach on Sunday morning to celebrate World Cleanup Day.' What is the answer to the 'Why' question?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Environment",
+          source: "Photo: Youth Daily / Rizky",
+          visualText: "Dozens of high school students in uniforms and rubber gloves holding biodegradable garbage sacks on the shoreline."
+        },
+        options: [
+          "Students of SMAN 1 Jakarta.",
+          "Along Ancol Beach.",
+          "On Sunday morning.",
+          "To celebrate World Cleanup Day.",
+          "Using rubber gloves and garbage bags."
+        ],
+        answer: 3,
+        explanation: "Pertanyaan 'Why' menanyakan alasan atau tujuan. Frasa 'to celebrate World Cleanup Day' menjelaskan tujuan pembersihan pantai."
+      },
+      {
+        id: 5,
+        topic: "Tata Bahasa / Tense",
+        type: "Grammar Rule",
+        question: "In professional photojournalism, what tense is standardly recommended for the first sentence (the lead sentence) of a caption?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Journalistic Rulebook",
+          ruleDetail: "Rule #1: Lead sentence describing the action captured right in the frame."
+        },
+        options: [
+          "Past Perfect Tense",
+          "Simple Future Tense",
+          "Simple Present Tense",
+          "Past Continuous Tense",
+          "Future Perfect Tense"
+        ],
+        answer: 2,
+        explanation: "Kalimat pertama (lead sentence) lazim menggunakan Simple Present Tense untuk menyajikan rasa aktualitas dan hidup saat pembaca menyaksikan foto."
+      },
+      {
+        id: 6,
+        topic: "Quote Caption",
+        type: "Interpretation",
+        question: "Below an image of a young athlete tying her running shoes: '\"Success isn't given. It's earned. On the track, on the field, in the gym with blood, sweat, and the occasional tear.\" — Unknown.' What is the main message/tone of this quote caption?",
+        mediaType: "quote-box",
+        mediaContent: {
+          author: "Sports Motivation",
+          quoteText: "“Success isn't given. It's earned. On the track, on the field, in the gym with blood, sweat, and the occasional tear.”"
+        },
+        options: [
+          "Warning athletes about fatal running injuries.",
+          "Encouraging hard work, persistence, and discipline to achieve success.",
+          "Criticizing public sports facilities and gym equipment.",
+          "Selling branded sport shoes to high schoolers.",
+          "Complaining about painful track competitions."
+        ],
+        answer: 1,
+        explanation: "Quote caption di atas menyampaikan pesan motivasional tentang kerja keras dan kedisiplinan sebagai kunci meraih prestasi."
+      },
+      {
+        id: 7,
+        topic: "Expanded Caption",
+        type: "Structure Analysis",
+        question: "Which of the following characteristics distinguishes an 'Expanded Caption' from a 'Summary Caption'?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Caption Types",
+          headline: "Summary vs Expanded",
+          sub: "Which element provides more depth in an expanded caption?"
+        },
+        options: [
+          "Expanded captions do not include the 5W+1H information at all.",
+          "Expanded captions are always written in poetic rhymes.",
+          "Expanded captions include background context, aftermath, or a relevant quote from a person involved.",
+          "Expanded captions only consist of one single noun phrase.",
+          "Expanded captions must be placed on the upper corner of the photograph."
+        ],
+        answer: 2,
+        explanation: "Expanded caption memuat formula 5W+1H lengkap ditambah kalimat lanjutan berisikan latar belakang, fakta tambahan, atau kutipan narasumber."
+      },
+      {
+        id: 8,
+        topic: "Photo Credit / Byline",
+        type: "Journalistic Conventions",
+        question: "At the end of a caption, you often see: '(Photo: AP / Charles Dharapak)'. What is the purpose of this text?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Credit Line Element",
+          ruleDetail: "Acknowledging intellectual property and news agency attribution."
+        },
+        options: [
+          "To tell who designed the printing press machinery.",
+          "To credit the photographer and news agency that captured the image.",
+          "To state the name of the printing company owner.",
+          "To mention the subject's favorite editor.",
+          "To reveal the secret sponsor of the newspaper."
+        ],
+        answer: 1,
+        explanation: "Photo credit atau byline berfungsi memberikan hak cipta serta atribusi pengakuan kepada fotografer dan agensi berita yang memotret gambar."
+      },
+      {
+        id: 9,
+        topic: "Grafik & Tabel Caption",
+        type: "Graphic Interpretation",
+        question: "Look at the chart caption: 'Figure 1.2: Annual decrease of forest coverage in Southeast Asia between 2015 and 2024 (Data source: FAO Report).' What is this caption informing us about?",
+        mediaType: "chart-mock",
+        mediaContent: {
+          chartTitle: "Forest Coverage Trends (2015-2024)",
+          axis: "X: Year | Y: Square Kilometers (Thousands)",
+          trend: "Downward slope indicates consistent loss over the 9-year span."
+        },
+        options: [
+          "The increase in forest planting programs across Europe.",
+          "The number of wildlife species born in 2024.",
+          "The decline in forested area in Southeast Asia over a 9-year period.",
+          "The market price of certified Indonesian timber.",
+          "The biography of the FAO director."
+        ],
+        answer: 2,
+        explanation: "Teks 'Annual decrease of forest coverage in Southeast Asia between 2015 and 2024' menerangkan penurunan tutupan hutan di Asia Tenggara selama 9 tahun."
+      },
+      {
+        id: 10,
+        topic: "Kaidah Penulisan Caption",
+        type: "Best Practices",
+        question: "Which of the following is considered a BAD practice when writing a caption for a news photo?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Common Mistakes in Captions",
+          ruleDetail: "Writing redundant and obvious statements."
+        },
+        options: [
+          "Double-checking the correct spelling of people's full names.",
+          "Starting the caption with 'This is a picture of...' or 'The photo shows...'",
+          "Identifying key figures clearly from left to right.",
+          "Keeping the caption concise, factual, and informative.",
+          "Indicating the specific date and location of the event."
+        ],
+        answer: 1,
+        explanation: "Awalan seperti 'This is a picture of...' atau 'The photo shows...' dinilai mubazir dan tidak efektif karena pembaca sudah mengetahui bentuk visual tersebut."
+      },
+      {
+        id: 11,
+        topic: "Group Identification",
+        type: "Types of Caption",
+        question: "A photo shows five winning debate students standing on stage. The caption lists them: 'From left to right: Amanda, Kevin, Siti, Dennis, and Maya holding their national championship trophies.' This is an example of...",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Stage Podium",
+          headline: "Multiple subjects alignment",
+          sub: "Designating each person by spatial positioning (left to right)."
+        },
+        options: [
+          "Quote Caption",
+          "Summary Caption",
+          "Group Identification Caption",
+          "Identification Bar",
+          "Satirical Caption"
+        ],
+        answer: 2,
+        explanation: "Group Identification Caption merinci nama-nama subjek dalam kelompok sesuai urutan posisi fisiknya di dalam foto."
+      },
+      {
+        id: 12,
+        topic: "Analisis Kontekstual",
+        type: "Reading Comprehension",
+        question: "'Rescue workers navigate a rubber boat through floodwaters in Demak, Central Java, on Tuesday. Heavy rainfall over the weekend caused local rivers to breach their banks.' What was the direct cause of the flooding according to the caption?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Natural Disaster",
+          source: "Photo: BPBD / Media Hub",
+          visualText: "Orange rubber boat navigating a submerged residential street where water reaches fence height."
+        },
+        options: [
+          "An underground water pipe explosion.",
+          "A coastal tsunami triggered by an offshore earthquake.",
+          "Heavy rainfall over the weekend causing rivers to overflow.",
+          "Failure of local dam gates due to improper maintenance.",
+          "Illegal mining along the highway."
+        ],
+        answer: 2,
+        explanation: "Kalimat kedua menyatakan: 'Heavy rainfall over the weekend caused local rivers to breach their banks' (hujan lebat menyebabkan sungai meluap)."
+      },
+      {
+        id: 13,
+        topic: "Kaidah Kebahasaan (Prepositions)",
+        type: "Language Features",
+        question: "Choose the correct preposition to complete this caption: 'Volunteers distributed hot meals to stranded villagers _____ a temporary shelter _____ Wednesday morning.'",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Grammar in Context",
+          headline: "Location & Time Prepositions",
+          sub: "Filling in the prepositions for shelter and specific day morning."
+        },
+        options: [
+          "at / on",
+          "in / in",
+          "on / at",
+          "for / by",
+          "into / of"
+        ],
+        answer: 0,
+        explanation: "Digunakan preposisi 'at' untuk tempat spesifik (at a temporary shelter) dan 'on' untuk penanda waktu berhari spesifik (on Wednesday morning)."
+      },
+      {
+        id: 14,
+        topic: "Pilihan Kata (Diction)",
+        type: "Vocabulary & Tone",
+        question: "Look at the image description: A firefighter gently hands a recovered kitten to a smiling young boy outside a burnt house. Which caption uses the most objective and appropriate journalistic tone?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Human Interest",
+          source: "Photo: City Gazette / B. Santoso",
+          visualText: "A soot-stained firefighter kneeling down, gently handing a ginger kitten back to a relieved young boy."
+        },
+        options: [
+          "The greatest angel on earth miraculously saves an innocent little beast from evil hellish flames.",
+          "Firefighter Bambang Irawan returns a rescued kitten to 8-year-old Arka following an electrical house fire in Kebayoran on Thursday.",
+          "Look how foolish this kid was for almost losing his cat during a tiny fire accident.",
+          "Houses burning are common nowadays because people are careless with cooking oil.",
+          "A man in funny yellow jacket hands an animal to an anonymous person."
+        ],
+        answer: 1,
+        explanation: "Gaya jurnalistik harus objektif, menyajikan fakta akurat, menyebutkan nama pihak, dan tidak memakai nada hiperbolis atau menghakimi."
+      },
+      {
+        id: 15,
+        topic: "Poster & Infografis",
+        type: "Visual Caption",
+        question: "On a public health infographic about dengue fever, the caption states: 'Remember the 3M Plus protocol: Drain water containers, cover storage tanks, and recycle discarded items.' What is the communicative intention of this caption?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Health Campaign Infographic",
+          ruleDetail: "Preventing Dengue Fever: Drain, Cover, Recycle."
+        },
+        options: [
+          "To persuade the public to buy expensive chemical pesticides.",
+          "To inform and urge the public to follow preventative steps against mosquito breeding.",
+          "To report the financial earnings of sanitation workers.",
+          "To describe the biological anatomy of the Aedes aegypti mosquito.",
+          "To entertain children with cartoon mosquito characters."
+        ],
+        answer: 1,
+        explanation: "Caption pada infografis kesehatan bertujuan memberi instruksi serta mengimbau masyarakat untuk mengambil langkah pencegahan 3M Plus."
+      },
+      {
+        id: 16,
+        topic: "Analisis Posisi Subjek",
+        type: "Spatial Identifiers",
+        question: "When writing a caption for a photo showing two people shaking hands, how should their positions be indicated if the reader needs to differentiate them?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Clarity in Captions",
+          headline: "Distinguishing multiple individuals",
+          sub: "Standard directional cues for readers."
+        },
+        options: [
+          "By stating their weights and heights in centimeters.",
+          "By using spatial orientation words such as '(left)' and '(right)'.",
+          "By guessing who looks wealthier or older.",
+          "By putting their names in alphabetical order without direction cues.",
+          "By leaving the readers to identify them on social media."
+        ],
+        answer: 1,
+        explanation: "Tanda petunjuk arah seperti '(left)' dan '(right)' merupakan konvensi standar media untuk membedakan beberapa subjek."
+      },
+      {
+        id: 17,
+        topic: "Summary Caption Completeness",
+        type: "Structure Analysis",
+        question: "'Bandung Mayor Ridwan gives opening remarks during the Creative Youth Festival at Gedung Sate on Saturday.' What vital 5W+1H component is NOT explicitly answered in this short summary lead?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "City Event",
+          source: "Photo: Daily Tribune",
+          visualText: "A mayor speaking behind a wooden podium emblazoned with the regional seal."
+        },
+        options: [
+          "Who (Bandung Mayor Ridwan)",
+          "What (gives opening remarks)",
+          "Where (at Gedung Sate)",
+          "When (on Saturday)",
+          "Why / How (The underlying reason or theme of why the festival is held)"
+        ],
+        answer: 4,
+        explanation: "Teks sudah memuat Who, What, Where, dan When. Aspek Why (alasan mendalam) belum diuraikan dalam kalimat pendek tersebut."
+      },
+      {
+        id: 18,
+        topic: "Sosial Media vs Jurnalistik",
+        type: "Contextual Use",
+        question: "Which caption style is typically acceptable on personal social media (like Instagram) but strictly avoided in standard newspaper photojournalism?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Platform Differences",
+          ruleDetail: "Journalism standards vs Casual social media posts."
+        },
+        options: [
+          "Listing the exact time, date, and city.",
+          "Using verified factual statements.",
+          "Excessive emotional slang, ambiguous emojis alone, and irrelevant hashtags like '#vibes #mood'.",
+          "Mentioning the name and surname of the subject.",
+          "Crediting the professional camera operator."
+        ],
+        answer: 2,
+        explanation: "Penggunaan rentetan emoji dan hashtag gaul tanpa konteks berita bertentangan dengan standar etika jurnalistik formal."
+      },
+      {
+        id: 19,
+        topic: "Analisis Kalimat Latar",
+        type: "Grammar & Structure",
+        question: "Read this complete caption: '(1) Marine biologists release a rehabilitated green sea turtle into Karimunjawa waters on Friday. (2) The endangered animal was rescued by local fishermen two months ago after getting trapped in a discarded nylon net.' What is the grammatical function of sentence (2)?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Wildlife Conservation",
+          source: "Photo: Marine Foundation / Hendra",
+          visualText: "A green sea turtle sliding into crystal blue seawater assisted by two researchers in wetsuits."
+        },
+        options: [
+          "It provides the headline title of the newspaper.",
+          "It serves as a rhetorical question for the audience.",
+          "It gives background information explaining how the turtle ended up in rehabilitation.",
+          "It changes the topic to discuss plastic manufacturing prices.",
+          "It cancels the truth of the first sentence."
+        ],
+        answer: 2,
+        explanation: "Kalimat kedua dalam expanded caption memberikan latar belakang riwayat penyu tersebut sebelum kembali dilepasliarkan."
+      },
+      {
+        id: 20,
+        topic: "Sintesis & Evaluasi Caption",
+        type: "Critical Thinking",
+        question: "Why should a caption writer avoid stating the obvious, such as 'Two men are sitting on chairs'?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Writing Principle",
+          headline: "Adding Value Beyond the Visual",
+          sub: "Why simply restating what eyes can see is insufficient."
+        },
+        options: [
+          "Because printing chairs in words costs more ink.",
+          "Because readers can already see they are sitting; the caption should explain who they are, what they are discussing, or why the meeting matters.",
+          "Because chairs are illegal to mention in Indonesian press regulations.",
+          "Because captions must only talk about the weather in the background.",
+          "Because the photographer gets offended if furniture is mentioned."
+        ],
+        answer: 1,
+        explanation: "Caption yang bernilai jurnalistik tidak mengulang apa yang kasat mata, melainkan menjelaskan latar belakang nama tokoh dan konteks pertemuan."
+      },
+      // SOAL 21 - 50 (TAMBAHAN REVISI)
+      {
+        id: 21,
+        topic: "Kaidah Bahasa - Active Voice",
+        type: "Grammar Rule",
+        question: "Which of the following sentences adheres best to the journalistic guideline of using active voice in a caption lead?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Active vs Passive Voice",
+          ruleDetail: "Active sentences make captions lively and dynamic."
+        },
+        options: [
+          "A ceremonial ribbon was cut by Governor Ridwan at the new library on Monday.",
+          "Governor Ridwan cuts the ribbon to open the new city library on Monday.",
+          "Cutting of the ribbon by Governor Ridwan has been performed at the new library.",
+          "The ribbon was being cut as Governor Ridwan stood there.",
+          "It was the governor by whom the ceremonial ribbon was cut."
+        ],
+        answer: 1,
+        explanation: "Opsi B menggunakan kalimat aktif dengan simple present tense ('cuts the ribbon'), menjadikannya langsung, ringkas, dan hidup."
+      },
+      {
+        id: 22,
+        topic: "Konteks Foto Bencana",
+        type: "Reading Comprehension",
+        question: "'Mount Marapi spews dense volcanic ash 3,000 meters into the sky as seen from Bukittinggi, West Sumatra, on Sunday afternoon.' What is the 'Where' of this event?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Natural Disaster",
+          source: "Photo: PVMBG Handout",
+          visualText: "A massive grey ash plume towering over a mountain ridge beneath an overcast sky."
+        },
+        options: [
+          "Mount Marapi seen from Bukittinggi, West Sumatra.",
+          "Sunday afternoon.",
+          "3,000 meters high.",
+          "Spewing volcanic ash.",
+          "PVMBG Observation Office."
+        ],
+        answer: 0,
+        explanation: "Unsur 'Where' menerangkan tempat kejadian/pengamatan: Mount Marapi yang tampak dari Bukittinggi, Sumatera Barat."
+      },
+      {
+        id: 23,
+        topic: "Pilihan Kata Emotif",
+        type: "Vocabulary & Style",
+        question: "Why should caption writers avoid subjective adjectives like 'beautiful', 'tragic', or 'heartbreaking'?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Journalistic Ethics",
+          headline: "Objectivity over Subjectivity",
+          sub: "Letting the facts evoke emotion rather than dictating it."
+        },
+        options: [
+          "Because printers cannot process descriptive adjectives.",
+          "Because journalists must remain neutral and let facts and visuals speak for themselves without imposing bias.",
+          "Because adjectives increase the font size of the caption.",
+          "Because adjectives are forbidden by English grammar rules.",
+          "Because readers dislike understanding emotional words."
+        ],
+        answer: 1,
+        explanation: "Jurnalis dituntut netral dan objektif; biarkan fakta dan foto yang menyampaikan emosi tanpa disetir kata sifat subjektif penulis."
+      },
+      {
+        id: 24,
+        topic: "Identification Bar",
+        type: "Structure Analysis",
+        question: "When is an 'Identification Bar' caption most appropriately used in publications?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Media Layout",
+          headline: "Single Subject Portraits",
+          sub: "When the article already covers the full event detail."
+        },
+        options: [
+          "When describing a complex multi-vehicle accident on a highway.",
+          "When accompanying a standard headshot or profile photo of a keynote speaker or featured interview subject.",
+          "When presenting a detailed statistical demographic chart.",
+          "When showing a recipe with 10 cooking steps.",
+          "When providing a step-by-step science experiment guide."
+        ],
+        answer: 1,
+        explanation: "Identification Bar sangat ideal untuk pasfoto atau potret kepala (headshot) tunggal tokoh yang namanya sudah dibahas dalam artikel."
+      },
+      {
+        id: 25,
+        topic: "Kutipan / Quote Caption",
+        type: "Analysis",
+        question: "'\"Education is the most powerful weapon which you can use to change the world.\" — Nelson Mandela.' What makes this caption suitable for a school graduation photo?",
+        mediaType: "quote-box",
+        mediaContent: {
+          author: "Global Leadership",
+          quoteText: "“Education is the most powerful weapon which you can use to change the world.” — Nelson Mandela"
+        },
+        options: [
+          "It advertises military weaponry to graduating students.",
+          "It reinforces the inspiring transformative value of learning and graduating.",
+          "It warns graduates that finding a job will be impossible.",
+          "It explains how to pass an English examination.",
+          "It instructs students to buy expensive textbooks."
+        ],
+        answer: 1,
+        explanation: "Kutipan Nelson Mandela tersebut menegaskan kekuatan transformatif pendidikan bagi para lulusan baru."
+      },
+      {
+        id: 26,
+        topic: "Analisis Waktu / When",
+        type: "Grammar & Comprehension",
+        question: "'Indonesian badminton pair Leo and Daniel celebrate their men's doubles victory at the Indonesia Masters in Jakarta on Sunday night.' When did the celebration take place?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Sports",
+          source: "Photo: PBSI / Media",
+          visualText: "Two badminton players embracing on the court holding national flags."
+        },
+        options: [
+          "At the Indonesia Masters.",
+          "In Jakarta.",
+          "On Sunday night.",
+          "During men's doubles tournament.",
+          "Leo and Daniel."
+        ],
+        answer: 2,
+        explanation: "Unsur 'When' pada kalimat tersebut adalah 'on Sunday night'."
+      },
+      {
+        id: 27,
+        topic: "Infografis & Visual Data",
+        type: "Graphic Interpretation",
+        question: "What should the lead sentence of a caption for a bar chart illustrating smartphone sales trends typically state?",
+        mediaType: "chart-mock",
+        mediaContent: {
+          chartTitle: "Q1-Q4 Smartphone Market Share",
+          axis: "Brand vs Quarterly Units Sold",
+          trend: "Vendor A peaks in Q3 while Vendor B holds steady."
+        },
+        options: [
+          "A bedtime story about the inventor of the telephone.",
+          "The main finding or notable trend displayed in the chart, such as market growth or shift in market share.",
+          "A random quote about why computers are noisy.",
+          "The hex color codes used to shade each bar in the diagram.",
+          "A list of customer complaints against phone battery life."
+        ],
+        answer: 1,
+        explanation: "Caption grafik atau diagram wajib menyarikan tren utama, temuan penting, atau pergeseran data yang divisualisasikan."
+      },
+      {
+        id: 28,
+        topic: "Preposisi Alat / Means",
+        type: "Language Features",
+        question: "Complete the caption: 'The archeological team scanned the ancient temple relief _____ a 3D digital laser.'",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Grammar: Prepositions",
+          headline: "Instrumental Preposition",
+          sub: "Indicating the tool used to perform an action."
+        },
+        options: [
+          "using / with",
+          "at",
+          "between",
+          "under",
+          "towards"
+        ],
+        answer: 0,
+        explanation: "Menyatakan instrumen atau alat yang digunakan memakai kata 'with' atau 'using' (with a 3D digital laser)."
+      },
+      {
+        id: 29,
+        topic: "Verifikasi Fakta",
+        type: "Journalistic Ethics",
+        question: "Why is accurate fact-checking of names and dates crucial in writing captions?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Accuracy Principle",
+          ruleDetail: "Misspelling names undermines publication credibility."
+        },
+        options: [
+          "Because misspelled names cause physical damage to newsprint.",
+          "Because inaccuracy damages editorial credibility and can lead to serious misinformation.",
+          "Because students will fail spelling bees.",
+          "Because social media algorithms automatically ban photos with typos.",
+          "Because journalists are paid by the number of correct vowels."
+        ],
+        answer: 1,
+        explanation: "Ketepatan ejaan nama tokoh dan tanggal krusial demi menjaga kredibilitas pers serta mencegah pencemaran atau fitnah."
+      },
+      {
+        id: 30,
+        topic: "Struktur Expanded Caption",
+        type: "Identification",
+        question: "Which of the following contains BOTH a lead sentence in the present tense AND an explanatory background sentence in the past tense?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Tense Combination",
+          headline: "Present Lead + Past Context",
+          sub: "The hallmark of high-standard expanded captions."
+        },
+        options: [
+          "Students were studying yesterday and will study tomorrow.",
+          "A farmer examines dried corn crops in Gunungkidul on Monday. Drought had ruined over 200 hectares of farmland across the district since June.",
+          "The weather was cloudy and it rained all day long.",
+          "Two athletes are running because they like running in the park every morning.",
+          "The president will travel abroad next month to attend an international summit."
+        ],
+        answer: 1,
+        explanation: "Opsi B adalah expanded caption ideal: kalimat ke-1 present ('examines'), kalimat ke-2 past/past perfect ('Drought had ruined...') sebagai latar belakang."
+      },
+      {
+        id: 31,
+        topic: "Konteks Foto Lingkungan",
+        type: "Reading Comprehension",
+        question: "'Fishermen in Bali release hundreds of olive ridley turtle hatchlings into the ocean on Saturday to promote marine biodiversity.' What does 'olive ridley' refer to in this caption?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Nature Conservation",
+          source: "Photo: Conservation Post",
+          visualText: "Small palm-sized sea turtles scurrying down sandy beach into breaking waves."
+        },
+        options: [
+          "A rare species of sea olive tree.",
+          "A brand of motorized fishing boat.",
+          "A specific species of sea turtle.",
+          "A traditional Balinese dance festival.",
+          "A type of environmental recycling tool."
+        ],
+        answer: 2,
+        explanation: "Olive ridley (penyu lekang) adalah salah satu spesies penyu laut yang dilindungi."
+      },
+      {
+        id: 32,
+        topic: "Tata Bahasa - Participle Phrases",
+        type: "Language Features",
+        question: "'_____ outside the stadium for five hours, soccer fans cheered wildly as the gates opened on Saturday afternoon.' Choose the best phrase to begin this caption.",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Participial Phrase",
+          ruleDetail: "Describing simultaneous or prior action of the subject."
+        },
+        options: [
+          "Having waited",
+          "Wait",
+          "Are waiting",
+          "They waited",
+          "Will wait"
+        ],
+        answer: 0,
+        explanation: "'Having waited outside...' adalah perfect participial phrase yang tepat untuk menerangkan aksi yang telah berlangsung sebelum aksi berikutnya terjadi."
+      },
+      {
+        id: 33,
+        topic: "Jenis Caption - Summary",
+        type: "Identification",
+        question: "A caption answers Who, What, Where, When, and Why in a concise single sentence without adding quotes or extended historical background. What kind of caption is this?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Caption Varieties",
+          headline: "All 5Ws in One Sentence",
+          sub: "Compact yet complete factual coverage."
+        },
+        options: [
+          "Identification Bar",
+          "Quote Caption",
+          "Summary Caption",
+          "Novel Caption",
+          "Headline"
+        ],
+        answer: 2,
+        explanation: "Summary caption merangkum seluruh elemen 5W dasar dalam satu kesatuan kalimat padat tanpa kutipan tambahan."
+      },
+      {
+        id: 34,
+        topic: "Tanda Baca / Punctuation",
+        type: "Language Features",
+        question: "When writing photo credits at the end of a caption, which punctuation convention is most commonly utilized in English press style?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Punctuation Style",
+          ruleDetail: "Enclosing source credits cleanly at the end."
+        },
+        options: [
+          "Enclosing within parentheses: (Photo: Agency / Name)",
+          "Writing the credit inside quotation marks: \"Photo Agency\"",
+          "Putting question marks after every word: Photo? Agency?",
+          "Writing the credit entirely in lowercase without spaces.",
+          "Putting exclamation marks at both ends: !Photo!"
+        ],
+        answer: 0,
+        explanation: "Konvensi standar menggunakan tanda kurung di akhir caption: (Photo: Agency / Photographer Name)."
+      },
+      {
+        id: 35,
+        topic: "Konteks Poster Sosial",
+        type: "Visual Caption",
+        question: "A public banner displays a tree made of lightbulbs with the caption: 'Turn off unnecessary switches today for a greener tomorrow.' What is the communicative goal of this caption?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Energy Campaign",
+          headline: "Lightbulb Tree Graphic",
+          sub: "Action-oriented conservation message."
+        },
+        options: [
+          "To instruct the public to destroy electric lamps.",
+          "To persuade people to conserve electrical energy to protect the environment.",
+          "To announce a government discount on LED lighting.",
+          "To explain how lightbulbs grow on botanical trees.",
+          "To complain about high monthly utility bills."
+        ],
+        answer: 1,
+        explanation: "Teks tersebut bersifat persuasif (kampanye publik) yang mengajak hemat energi demi kelestarian lingkungan."
+      },
+      {
+        id: 36,
+        topic: "Diksi Jurnalistik",
+        type: "Vocabulary",
+        question: "Choose the most precise journalistic verb to complete: 'Minister of Health Budi Sadikin _____ the new pediatric medical wing in Semarang on Thursday.'",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Precision in Action Verbs",
+          ruleDetail: "Selecting verbs denoting formal inauguration."
+        },
+        options: [
+          "plays with",
+          "inaugurates",
+          "buys up",
+          "breaks down",
+          "forgets"
+        ],
+        answer: 1,
+        explanation: "'Inaugurates' (meresmikan) adalah kata kerja formal yang tepat untuk peresmian fasilitas publik oleh pejabat negara."
+      },
+      {
+        id: 37,
+        topic: "Identifikasi Subjek Jamak",
+        type: "Best Practices",
+        question: "If a photo shows ten students in a row, but only two of them are recipients of a special medal, how should the caption guide the reader?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Visual Clarity",
+          headline: "Selective Identification",
+          sub: "Guiding reader focus toward key subjects in a group."
+        },
+        options: [
+          "Ignore all names completely.",
+          "Explicitly state their relative position, such as: 'Medalists Siti Rahma (third from left) and Dani Putra (second from right)...'",
+          "Force readers to guess which students received the medal.",
+          "List all ten students without stating who won the medal.",
+          "Only write the name of the school's principal."
+        ],
+        answer: 1,
+        explanation: "Penulis wajib memberikan panduan posisi spasial seperti '(third from left)' agar pembaca langsung mengenali penerima penghargaan."
+      },
+      {
+        id: 38,
+        topic: "Tense Kalimat Kutipan",
+        type: "Grammar & Structure",
+        question: "In a quote caption, how should direct speech be punctuated?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Quotation Rules",
+          ruleDetail: "Proper placement of quotation marks and attributions."
+        },
+        options: [
+          "Enclosed with quotation marks: \"...\", followed by attribution: — Speaker Name.",
+          "With square brackets around every single letter: [A][B][C].",
+          "No quotation marks needed at all under any condition.",
+          "With parentheses around only verbs.",
+          "With hashtag signs before every word."
+        ],
+        answer: 0,
+        explanation: "Kalimat kutipan langsung wajib diapit tanda petik (\"...\") disertai penanda atribusi nama pembicara (— Speaker Name)."
+      },
+      {
+        id: 39,
+        topic: "Analisis Infografis Cuaca",
+        type: "Graphic Interpretation",
+        question: "'Satellite imagery shows Cyclone Sean intensifying over the Indian Ocean south of Java on Wednesday, bringing strong winds and heavy rainfall.' Which hazard is highlighted?",
+        mediaType: "chart-mock",
+        mediaContent: {
+          chartTitle: "BMKG Satellite Storm Tracker",
+          axis: "Ocean Coordinates: South of Java",
+          trend: "Spiral cyclone cloud band expanding eastward."
+        },
+        options: [
+          "Extreme volcanic eruption.",
+          "Severe weather consisting of intense winds and heavy rainfall.",
+          "Severe regional drought.",
+          "Forest fire smoke blanketing airports.",
+          "Snowstorm blocking mountain passes."
+        ],
+        answer: 1,
+        explanation: "Teks secara spesifik menyorot bahaya angin kencang dan hujan lebat akibat bibit siklon tropis."
+      },
+      {
+        id: 40,
+        topic: "Kaidah Panjang Teks Caption",
+        type: "Best Practices",
+        question: "Why should caption writers avoid writing four long paragraphs underneath a single photograph?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Conciseness Principle",
+          ruleDetail: "Captions complement the visual, not replace the full article body."
+        },
+        options: [
+          "Because photographs will become blurry if too much text is underneath.",
+          "Because a caption's role is to provide quick, accessible context; long analytical essays belong in the article body.",
+          "Because modern web browsers cannot scroll past images.",
+          "Because English grammar permits a maximum of 12 words per photo.",
+          "Because the ink becomes poisonous when overprinted."
+        ],
+        answer: 1,
+        explanation: "Fungsi caption adalah memberikan konteks cepat dan ringkas; uraian analisis panjang adalah porsi badan artikel (*body text*)."
+      },
+      {
+        id: 41,
+        topic: "Pilihan Kata - Keterangan Waktu",
+        type: "Language Features",
+        question: "When writing for a daily newspaper published on Tuesday morning, how should an event that happened on Monday afternoon be stated in the caption?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Temporal Precision",
+          ruleDetail: "Newspaper style guide: Specific day names vs relative terms."
+        },
+        options: [
+          "\"Two days before tomorrow.\"",
+          "\"On Monday afternoon.\"",
+          "\"A long time ago in an ancient era.\"",
+          "\"When the sun was shining somewhere.\"",
+          "\"At some unspecified hour.\""
+        ],
+        answer: 1,
+        explanation: "Standar jurnalistik menggunakan nama hari spesifik ('on Monday afternoon') ketimbang frasa ambigu."
+      },
+      {
+        id: 42,
+        topic: "Foto Human Interest",
+        type: "Comprehension",
+        question: "'Nine-year-old Farel reads a storybook under the warm glow of a solar-powered lamp in a remote village in Sumba on Tuesday.' What human interest element does this caption emphasize?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Human Interest",
+          source: "Photo: NGO Solar / Roni",
+          visualText: "A young boy smiling softly while reading by the light of a small solar lantern in a wooden home."
+        },
+        options: [
+          "The expensive price of commercial aviation fuel.",
+          "The positive educational impact of rural solar electrification on children's lives.",
+          "A warning against reading books at nighttime.",
+          "The commercial export of storybooks to European markets.",
+          "The danger of solar batteries in elementary schools."
+        ],
+        answer: 1,
+        explanation: "Caption bergenre human interest ini menonjolkan manfaat positif listrik tenaga surya bagi semangat belajar anak di daerah terpencil."
+      },
+      {
+        id: 43,
+        topic: "Identifikasi Lead Sentence",
+        type: "Structure Analysis",
+        question: "Which of the following serves as the 'lead' of a caption?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Anatomy of a Caption",
+          headline: "First Sentence Function",
+          sub: "Connecting visual action directly to the reader."
+        },
+        options: [
+          "The photographer's copyright email address at the bottom.",
+          "The very first sentence that describes who is in the picture and what they are doing right now.",
+          "The page number of the newspaper.",
+          "The glossary of difficult vocabulary words.",
+          "The price of the newspaper issue."
+        ],
+        answer: 1,
+        explanation: "Lead adalah kalimat pembuka caption yang mengidentifikasi subjek utama dan aksi yang sedang berlangsung dalam foto."
+      },
+      {
+        id: 44,
+        topic: "Grammar: Relative Clauses",
+        type: "Language Features",
+        question: "Complete the caption: 'Dr. Nadia, _____ led the vaccine development team, explains the clinical trial results during a press briefing on Thursday.'",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Grammar: Relative Pronoun",
+          headline: "Non-defining Relative Clause",
+          sub: "Referring to a person as the grammatical subject."
+        },
+        options: [
+          "which",
+          "who",
+          "whose",
+          "where",
+          "whom"
+        ],
+        answer: 1,
+        explanation: "Relative pronoun 'who' digunakan untuk merujuk pada subjek orang (Dr. Nadia who led the vaccine development team)."
+      },
+      {
+        id: 45,
+        topic: "Caption Komik / Ilustrasi",
+        type: "Types of Caption",
+        question: "An editorial cartoon shows Mother Earth wearing an ice pack on her head while holding a thermometer. The caption reads: 'Global Fever: Time for urgent climate action.' What is the primary purpose of this caption?",
+        mediaType: "quote-box",
+        mediaContent: {
+          author: "Editorial Cartoon",
+          quoteText: "[Cartoon of Earth with ice pack & thermometer] — 'Global Fever: Time for urgent climate action.'"
+        },
+        options: [
+          "To instruct doctors how to treat human viral influenza.",
+          "To humorously yet critically draw attention to the urgency of addressing global warming.",
+          "To advertise commercial ice bags and digital thermometers.",
+          "To suggest that planets have biological heads.",
+          "To forecast freezing blizzard weather."
+        ],
+        answer: 1,
+        explanation: "Kartun editorial dan caption-nya bertujuan menyindir sekaligus mengingatkan publik akan urgensi krisis pemanasan global (*global warming*)."
+      },
+      {
+        id: 46,
+        topic: "Penggunaan Nama Tempat",
+        type: "Geographical Precision",
+        question: "Why should a caption mention 'Nusantara, East Kalimantan' rather than merely saying 'a city'?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Geographical Accuracy",
+          ruleDetail: "Vagueness diminishes news credibility."
+        },
+        options: [
+          "Because specific locations give geographic authenticity and reliable context to the audience.",
+          "Because readers cannot read captions without knowing the postal code.",
+          "Because printers charge penalties for writing the word 'city'.",
+          "Because generic words are legally prohibited in newspapers.",
+          "Because photographers prefer long place names."
+        ],
+        answer: 0,
+        explanation: "Spesifikasi tempat memberikan keaslian geografis, akurasi pemberitaan, dan konteks yang jelas bagi khalayak pembaca."
+      },
+      {
+        id: 47,
+        topic: "Analisis Struktur 5W",
+        type: "Comprehension",
+        question: "'Astronaut Sunita Williams waves goodbye before boarding the spacecraft at Kennedy Space Center on Wednesday.' Which 5W+1H element answers 'boarding the spacecraft'?",
+        mediaType: "news-photo",
+        mediaContent: {
+          tag: "Space Exploration",
+          source: "Photo: NASA / Handout",
+          visualText: "An astronaut in a white spacesuit waving towards the camera near a gantry elevator."
+        },
+        options: [
+          "Who",
+          "Where",
+          "What (the action being taken)",
+          "When",
+          "Why"
+        ],
+        answer: 2,
+        explanation: "Aksi 'boarding the spacecraft' menjawab pertanyaan 'What' (apa yang sedang dilakukan subjek)."
+      },
+      {
+        id: 48,
+        topic: "Kaidah Huruf Kapital / Capitalization",
+        type: "Language Features",
+        question: "Which option demonstrates correct capitalization for proper nouns in a caption lead?",
+        mediaType: "rule-box",
+        mediaContent: {
+          ruleTitle: "Proper Noun Capitalization",
+          ruleDetail: "Names of people, organizations, days, and places must be capitalized."
+        },
+        options: [
+          "indonesian president joko widodo visits solo on monday.",
+          "Indonesian President Joko Widodo visits Solo on Monday.",
+          "INDONESIAN PRESIDENT JOKO WIDODO VISITS SOLO ON MONDAY IN ALL CAPS.",
+          "indonesian President joko Widodo Visits solo On monday.",
+          "Indonesian president joko widodo Visits solo on monday."
+        ],
+        answer: 1,
+        explanation: "Nama kebangsaan (Indonesian), jabatan resmi dengan nama tokoh (President Joko Widodo), nama kota (Solo), dan nama hari (Monday) wajib diawali huruf kapital."
+      },
+      {
+        id: 49,
+        topic: "Peran Caption dalam Media Digital",
+        type: "Media Literacy",
+        question: "In online news websites and social newsfeeds, why do readers frequently read the photo caption BEFORE reading the full article?",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Digital Reader Behavior",
+          headline: "Visual Engagement First",
+          sub: "Eye-tracking studies show photos and captions capture instant attention."
+        },
+        options: [
+          "Because captions are written in hidden invisible fonts.",
+          "Because human eyes are naturally drawn to photos first, and captions immediately satisfy their curiosity about the image.",
+          "Because reading the main article is prohibited without permission.",
+          "Because digital captions contain secret shopping vouchers.",
+          "Because captions are the only part of a website with colors."
+        ],
+        answer: 1,
+        explanation: "Secara psikologis mata pembaca lebih dulu tertuju pada visual foto, sehingga caption menjadi teks pertama yang dibaca guna memuaskan rasa ingin tahu."
+      },
+      {
+        id: 50,
+        topic: "Sintesis Keseluruhan Materi",
+        type: "Summary & Review",
+        question: "To create an exemplary caption for a high school magazine photo, a student writer should ensure that it...",
+        mediaType: "visual-card",
+        mediaContent: {
+          badge: "Mastery Synthesis",
+          headline: "The Golden Standards of Caption Writing",
+          sub: "Combining factual accuracy, active present lead, and proper credit."
+        },
+        options: [
+          "Is vague, mentions no names, and uses five question marks.",
+          "Accurately answers 5W+1H, uses active present tense for the lead, identifies subjects correctly, and cites the photo credit.",
+          "Contains only hashtags and three laughing emojis.",
+          "Repeats the exact sentence: 'This is a photo of some students at school.'",
+          "Is copied word-for-word from an unrelated fictional poem."
+        ],
+        answer: 1,
+        explanation: "Standar emas caption: menjawab unsur 5W+1H faktual, kalimat pembuka aktif ber-present tense, identitas subjek presisi, serta menyertakan kredit foto."
+      }
+    ];
+
+    // State Variables
+    let currentQuestionIndex = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let flaggedQuestions = new Array(questions.length).fill(false);
+    let timerInterval = null;
+    let totalExamDurationSeconds = 60 * 60; // 60 menit untuk 50 soal
+    let remainingTimeSeconds = totalExamDurationSeconds;
+    let studentData = {
+      name: "",
+      studentClass: "XI A"
+    };
+    let quizStartTime = null;
+    let quizEndTime = null;
+    let finalExamResult = null;
+
+    // Webscript URL aktif (dikirim di background tanpa menampilkan URL di interface)
+    const webscriptUrl = "https://script.google.com/macros/s/AKfycbyVYI5l9IOsw5EWdVV018mI1uzV8WAoyGVSwN5_efva_qKsdWSUGqg01tDFEdT29c80/exec";
+
+    // DOM Elements
+    const screenLogin = document.getElementById('screen-login');
+    const screenQuiz = document.getElementById('screen-quiz');
+    const screenResult = document.getElementById('screen-result');
+
+    const loginForm = document.getElementById('login-form');
+    const loginNameInput = document.getElementById('login-name');
+    const badgeStudentInfo = document.getElementById('badge-student-info');
+
+    const timerDisplay = document.getElementById('timer-display');
+    const badgeQuestionNum = document.getElementById('badge-question-num');
+    const mediaContainer = document.getElementById('media-container');
+    const questionTypeTag = document.getElementById('question-type-tag');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const flagBtn = document.getElementById('flag-btn');
+    const flagIcon = document.getElementById('flag-icon');
+    const submitQuizBtn = document.getElementById('submit-quiz-btn');
+    const paletteGrid = document.getElementById('palette-grid');
+    const answeredStat = document.getElementById('answered-stat');
+
+    // Guide Modal
+    const guideModalBtn = document.getElementById('guide-modal-btn');
+    const guideModal = document.getElementById('guide-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalOkBtn = document.getElementById('modal-ok-btn');
+    const webscriptSyncStatus = document.getElementById('webscript-sync-status');
+
+    // Custom Alert Modal
+    const customAlert = document.getElementById('custom-alert');
+    const alertTitle = document.getElementById('alert-title');
+    const alertMsg = document.getElementById('alert-msg');
+    const alertConfirmBtn = document.getElementById('alert-confirm-btn');
+    const alertCancelBtn = document.getElementById('alert-cancel-btn');
+
+    // Helper: Show Custom Dialog
+    function showDialog(title, message, isConfirm = false, onConfirm = null) {
+      alertTitle.textContent = title;
+      alertMsg.textContent = message;
+      customAlert.classList.remove('hidden');
+
+      if (isConfirm) {
+        alertCancelBtn.classList.remove('hidden');
+        alertCancelBtn.onclick = () => {
+          customAlert.classList.add('hidden');
+        };
+        alertConfirmBtn.onclick = () => {
+          customAlert.classList.add('hidden');
+          if (onConfirm) onConfirm();
+        };
+      } else {
+        alertCancelBtn.classList.add('hidden');
+        alertConfirmBtn.onclick = () => {
+          customAlert.classList.add('hidden');
+          if (onConfirm) onConfirm();
+        };
+      }
+    }
+
+    // Modal Events
+    guideModalBtn.addEventListener('click', () => guideModal.classList.remove('hidden'));
+    closeModalBtn.addEventListener('click', () => guideModal.classList.add('hidden'));
+    modalOkBtn.addEventListener('click', () => guideModal.classList.add('hidden'));
+
+    // Handle Login & Start Quiz
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = loginNameInput.value.trim();
+      const selectedClassElem = document.querySelector('input[name="student-class"]:checked');
+      const studentClass = selectedClassElem ? selectedClassElem.value : "XI A";
+
+      if (!name) {
+        showDialog("Peringatan", "Silakan masukkan nama lengkap siswa terlebih dahulu.");
+        return;
+      }
+
+      studentData = {
+        name: name,
+        studentClass: studentClass
+      };
+
+      badgeStudentInfo.textContent = `${name} (${studentClass})`;
+      screenLogin.classList.add('hidden');
+      screenQuiz.classList.remove('hidden');
+      quizStartTime = new Date();
+
+      initPalette();
+      renderQuestion(0);
+      startTimer();
+    });
+
+    // Timer Logic
+    function startTimer() {
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        remainingTimeSeconds--;
+        const mins = Math.floor(remainingTimeSeconds / 60);
+        const secs = remainingTimeSeconds % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+        if (remainingTimeSeconds <= 0) {
+          clearInterval(timerInterval);
+          showDialog("Waktu Ujian Habis!", "Alokasi waktu 60 menit telah habis. Sistem akan mengumpulkan lembar jawaban secara otomatis.", false, () => {
+            finishQuiz();
+          });
+        }
+      }, 1000);
+    }
+
+    // Question Palette (1 to 50)
+    function initPalette() {
+      paletteGrid.innerHTML = '';
+      for (let i = 0; i < questions.length; i++) {
+        const btn = document.createElement('button');
+        btn.id = `palette-btn-${i}`;
+        btn.textContent = i + 1;
+        btn.className = "w-full aspect-square rounded-lg text-xs font-bold transition-all border flex items-center justify-center bg-slate-50 border-slate-200 text-slate-700 hover:border-indigo-400";
+        btn.addEventListener('click', () => {
+          renderQuestion(i);
+        });
+        paletteGrid.appendChild(btn);
+      }
+      updatePaletteUI();
+    }
+
+    function updatePaletteUI() {
+      let answeredCount = 0;
+      for (let i = 0; i < questions.length; i++) {
+        const btn = document.getElementById(`palette-btn-${i}`);
+        if (!btn) continue;
+
+        btn.className = "w-full aspect-square rounded-lg text-xs font-bold transition-all border flex items-center justify-center ";
+
+        if (i === currentQuestionIndex) {
+          btn.className += "bg-indigo-600 text-white border-indigo-600 shadow-sm ring-2 ring-indigo-300 ";
+        } else if (flaggedQuestions[i]) {
+          btn.className += "bg-amber-400 text-amber-950 border-amber-500 font-extrabold ";
+        } else if (userAnswers[i] !== null) {
+          btn.className += "bg-emerald-500 text-white border-emerald-600 ";
+        } else {
+          btn.className += "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 ";
+        }
+
+        if (userAnswers[i] !== null) {
+          answeredCount++;
+        }
+      }
+      answeredStat.textContent = `${answeredCount}/${questions.length} Terjawab`;
+    }
+
+    // Render Media Container Based on Type
+    function renderMedia(q) {
+      mediaContainer.innerHTML = '';
+      if (!q.mediaContent) return;
+
+      if (q.mediaType === 'news-photo') {
+        mediaContainer.innerHTML = `
+          <div class="p-4 sm:p-5 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+            <div class="flex items-center justify-between text-xs text-slate-300 mb-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/10 text-indigo-300 font-semibold">
+                <i class="ph-fill ph-camera"></i> ${q.mediaContent.tag}
+              </span>
+              <span class="text-[11px] text-slate-400 italic">${q.mediaContent.source}</span>
+            </div>
+            <div class="bg-slate-800/80 rounded-xl p-4 border border-slate-700 text-center my-2">
+              <i class="ph-duotone ph-image text-3xl text-indigo-400 mb-2"></i>
+              <p class="text-xs sm:text-sm text-slate-200 font-medium italic">
+                “${q.mediaContent.visualText}”
+              </p>
+            </div>
+          </div>
+        `;
+      } else if (q.mediaType === 'quote-box') {
+        mediaContainer.innerHTML = `
+          <div class="p-5 sm:p-6 bg-gradient-to-r from-amber-500/10 via-indigo-500/10 to-purple-500/10 border-l-4 border-indigo-500 text-slate-800">
+            <div class="text-xs uppercase font-bold tracking-wider text-indigo-700 mb-1 flex items-center gap-1.5">
+              <i class="ph-fill ph-quotes text-base"></i> ${q.mediaContent.author}
+            </div>
+            <div class="text-base sm:text-lg font-serif italic text-slate-800 font-medium leading-relaxed">
+              ${q.mediaContent.quoteText}
+            </div>
+          </div>
+        `;
+      } else if (q.mediaType === 'chart-mock') {
+        mediaContainer.innerHTML = `
+          <div class="p-5 bg-slate-900 text-slate-100">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+              <span class="text-xs font-bold text-emerald-400 flex items-center gap-1">
+                <i class="ph-bold ph-chart-line-up"></i> ${q.mediaContent.chartTitle}
+              </span>
+              <span class="text-[10px] text-slate-400">Infographic Visual</span>
+            </div>
+            <div class="text-xs text-slate-300 space-y-1 bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+              <p><span class="text-slate-400">Axis:</span> ${q.mediaContent.axis}</p>
+              <p><span class="text-slate-400">Trend:</span> ${q.mediaContent.trend}</p>
+            </div>
+          </div>
+        `;
+      } else if (q.mediaType === 'rule-box') {
+        mediaContainer.innerHTML = `
+          <div class="p-4 bg-sky-50 border border-sky-100 text-sky-950 flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-sky-200 text-sky-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="ph-bold ph-info text-base"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-sky-900 uppercase tracking-wider">${q.mediaContent.ruleTitle}</div>
+              <div class="text-xs sm:text-sm text-sky-800 mt-0.5">${q.mediaContent.ruleDetail}</div>
+            </div>
+          </div>
+        `;
+      } else {
+        mediaContainer.innerHTML = `
+          <div class="p-4 bg-slate-100 border border-slate-200 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">${q.mediaContent.badge}</span>
+              <div class="font-bold text-sm text-slate-900">${q.mediaContent.headline}</div>
+              <p class="text-xs text-slate-500 mt-0.5">${q.mediaContent.sub}</p>
+            </div>
+            <i class="ph-duotone ph-newspaper-clipping text-3xl text-slate-400"></i>
+          </div>
+        `;
+      }
+    }
+
+    // Render Question by Index
+    function renderQuestion(index) {
+      currentQuestionIndex = index;
+      const q = questions[index];
+
+      // Update Header Badges
+      badgeQuestionNum.textContent = `Soal ${index + 1} / ${questions.length}`;
+      questionTypeTag.textContent = `${q.topic} • ${q.type}`;
+      questionText.textContent = q.question;
+
+      // Media
+      renderMedia(q);
+
+      // Options
+      optionsContainer.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+
+      q.options.forEach((opt, optIndex) => {
+        const isSelected = userAnswers[index] === optIndex;
+        const optBtn = document.createElement('button');
+        optBtn.className = `w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all flex items-start gap-3 ${
+          isSelected 
+            ? 'bg-indigo-50 border-indigo-600 text-indigo-950 shadow-sm ring-1 ring-indigo-500' 
+            : 'bg-white border-slate-200 hover:border-slate-300 text-slate-700 hover:bg-slate-50/80'
+        }`;
+
+        optBtn.innerHTML = `
+          <div class="w-7 h-7 rounded-xl flex items-center justify-center text-xs font-bold flex-shrink-0 transition-colors ${
+            isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'
+          }">
+            ${letters[optIndex]}
+          </div>
+          <div class="text-xs sm:text-sm leading-relaxed pt-0.5 font-medium flex-1">
+            ${opt}
+          </div>
+        `;
+
+        optBtn.addEventListener('click', () => {
+          userAnswers[currentQuestionIndex] = optIndex;
+          renderQuestion(currentQuestionIndex);
+        });
+
+        optionsContainer.appendChild(optBtn);
+      });
+
+      // Navigation Buttons State
+      prevBtn.disabled = index === 0;
+      if (index === questions.length - 1) {
+        nextBtn.innerHTML = `<span>Kumpulkan</span> <i class="ph-bold ph-check"></i>`;
+      } else {
+        nextBtn.innerHTML = `<span>Selanjutnya</span> <i class="ph-bold ph-caret-right"></i>`;
+      }
+
+      // Flag state
+      if (flaggedQuestions[index]) {
+        flagBtn.className = "px-4 py-2.5 bg-amber-50 border border-amber-300 text-amber-700 font-semibold text-sm rounded-xl transition-all flex items-center gap-2";
+        flagIcon.className = "ph-fill ph-bookmark-simple text-amber-600";
+      } else {
+        flagBtn.className = "px-4 py-2.5 bg-white border border-slate-200 hover:border-amber-400 text-slate-600 hover:text-amber-600 font-semibold text-sm rounded-xl transition-all flex items-center gap-2";
+        flagIcon.className = "ph-bold ph-bookmark-simple";
+      }
+
+      updatePaletteUI();
+    }
+
+    // Button Events
+    prevBtn.addEventListener('click', () => {
+      if (currentQuestionIndex > 0) {
+        renderQuestion(currentQuestionIndex - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentQuestionIndex < questions.length - 1) {
+        renderQuestion(currentQuestionIndex + 1);
+      } else {
+        promptSubmit();
+      }
+    });
+
+    flagBtn.addEventListener('click', () => {
+      flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex];
+      renderQuestion(currentQuestionIndex);
+    });
+
+    submitQuizBtn.addEventListener('click', () => {
+      promptSubmit();
+    });
+
+    function promptSubmit() {
+      const unanswered = userAnswers.filter(ans => ans === null).length;
+      let msg = "Apakah kamu yakin ingin mengakhiri dan mengumpulkan seluruh jawaban?";
+      if (unanswered > 0) {
+        msg = `Masih terdapat ${unanswered} soal yang belum dijawab. Apakah kamu tetap ingin mengumpulkan sekarang?`;
+      }
+
+      showDialog("Konfirmasi Pengumpulan Ujian", msg, true, () => {
+        finishQuiz();
+      });
+    }
+
+    // Finish Quiz & Send to Webscript
+    function finishQuiz() {
+      clearInterval(timerInterval);
+      quizEndTime = new Date();
+
+      screenQuiz.classList.add('hidden');
+      screenResult.classList.remove('hidden');
+
+      // Calculate Scores (50 questions = 2 points each)
+      let correctCount = 0;
+      for (let i = 0; i < questions.length; i++) {
+        if (userAnswers[i] === questions[i].answer) {
+          correctCount++;
+        }
+      }
+
+      const score = Math.round((correctCount / questions.length) * 100);
+      const wrongCount = questions.length - correctCount;
+
+      // Elapsed Time
+      const elapsedSeconds = Math.max(1, Math.floor((quizEndTime - quizStartTime) / 1000));
+      const mins = Math.floor(elapsedSeconds / 60);
+      const secs = elapsedSeconds % 60;
+      const formattedTime = `${mins}m ${secs}s`;
+
+      finalExamResult = {
+        name: studentData.name,
+        studentClass: studentData.studentClass,
+        score: score,
+        correctCount: correctCount,
+        wrongCount: wrongCount,
+        totalQuestions: questions.length,
+        duration: formattedTime,
+        submittedAt: new Date().toISOString()
+      };
+
+      // Set Elements
+      document.getElementById('stat-score').textContent = score;
+      document.getElementById('stat-correct').textContent = correctCount;
+      document.getElementById('stat-wrong').textContent = wrongCount;
+      document.getElementById('stat-time').textContent = formattedTime;
+
+      const resultBadge = document.getElementById('result-badge');
+      const resultTitle = document.getElementById('result-title');
+      const resultGreeting = document.getElementById('result-greeting');
+
+      if (score >= 85) {
+        resultBadge.className = "w-20 h-20 rounded-2xl mx-auto flex items-center justify-center text-4xl mb-4 bg-emerald-100 text-emerald-600 shadow-emerald-100 shadow-md";
+        resultBadge.innerHTML = `<i class="ph-fill ph-trophy"></i>`;
+        resultTitle.textContent = "Sangat Memuaskan!";
+        resultGreeting.textContent = `Selamat ${studentData.name} (${studentData.studentClass}), kamu menguasai seluruh aspek materi Caption Text dengan nilai ${score}/100.`;
+      } else if (score >= 70) {
+        resultBadge.className = "w-20 h-20 rounded-2xl mx-auto flex items-center justify-center text-4xl mb-4 bg-indigo-100 text-indigo-600 shadow-indigo-100 shadow-md";
+        resultBadge.innerHTML = `<i class="ph-fill ph-thumbs-up"></i>`;
+        resultTitle.textContent = "Hasil Baik!";
+        resultGreeting.textContent = `Bagus sekali ${studentData.name} (${studentData.studentClass}), kompetensi caption kamu telah melampaui batas tuntas (Skor ${score}/100).`;
+      } else {
+        resultBadge.className = "w-20 h-20 rounded-2xl mx-auto flex items-center justify-center text-4xl mb-4 bg-amber-100 text-amber-600 shadow-amber-100 shadow-md";
+        resultBadge.innerHTML = `<i class="ph-fill ph-books"></i>`;
+        resultTitle.textContent = "Perlu Pengayaan";
+        resultGreeting.textContent = `Tetap semangat ${studentData.name}! Pelajari kembali ulasan nomor-nomor yang keliru di bawah untuk pengayaan materi.`;
+      }
+
+      // Kirim Data ke Google Apps Script Webscript
+      sendDataToWebscript(finalExamResult);
+
+      renderReviewList();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Function kirim data ke Webscript Google Apps Script
+    async function sendDataToWebscript(payload) {
+      webscriptSyncStatus.className = "max-w-md mx-auto mb-6 p-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-indigo-50 text-indigo-700 border border-indigo-200";
+      webscriptSyncStatus.innerHTML = `
+        <i class="ph-bold ph-spinner animate-spin text-base"></i>
+        <span>Menyimpan nilai ke Spreadsheet...</span>
+      `;
+
+      try {
+        // Menggunakan fetch dengan mode no-cors dan Content-Type text/plain 
+        // untuk mencegah preflight CORS block dari Google Apps Script
+        await fetch(webscriptUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        // Sukses terkirim ke endpoint Google
+        webscriptSyncStatus.className = "p-3.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200";
+        webscriptSyncStatus.innerHTML = `
+          <i class="ph-fill ph-check-circle text-base text-emerald-600"></i>
+          <span>Data nilai telah berhasil disimpan ke Google Spreadsheet.</span>
+        `;
+      } catch (error) {
+        console.warn("Gagal menyinkronkan data ke webscript:", error);
+        webscriptSyncStatus.className = "p-3.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-rose-50 text-rose-800 border border-rose-200";
+        webscriptSyncStatus.innerHTML = `
+          <i class="ph-bold ph-warning-circle text-base text-rose-600"></i>
+          <span>Gagal menghubungkan ke server Spreadsheet.</span>
+        `;
+      }
+    }
+
+    // Render Answer Review List (50 Soal)
+    function renderReviewList() {
+      const reviewList = document.getElementById('review-list');
+      reviewList.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+
+      questions.forEach((q, idx) => {
+        const userChoice = userAnswers[idx];
+        const isCorrect = userChoice === q.answer;
+        const card = document.createElement('div');
+
+        card.className = `p-6 rounded-3xl border bg-white shadow-sm transition-all ${
+          isCorrect ? 'border-emerald-200' : 'border-rose-200'
+        }`;
+
+        let optionsHtml = '';
+        q.options.forEach((opt, oIdx) => {
+          let style = "border-slate-100 bg-slate-50 text-slate-600";
+          let icon = "";
+
+          if (oIdx === q.answer) {
+            style = "border-emerald-300 bg-emerald-50 text-emerald-900 font-bold";
+            icon = `<span class="ml-auto text-xs px-2 py-0.5 rounded bg-emerald-600 text-white">Kunci Benar</span>`;
+          } else if (oIdx === userChoice && !isCorrect) {
+            style = "border-rose-300 bg-rose-50 text-rose-900 font-medium";
+            icon = `<span class="ml-auto text-xs px-2 py-0.5 rounded bg-rose-500 text-white">Jawabanmu</span>`;
+          }
+
+          optionsHtml += `
+            <div class="p-3 rounded-xl border text-xs sm:text-sm flex items-center gap-2.5 ${style}">
+              <span class="w-6 h-6 rounded-lg bg-white/70 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                ${letters[oIdx]}
+              </span>
+              <span>${opt}</span>
+              ${icon}
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="text-xs font-bold px-3 py-1 rounded-full ${
+              isCorrect ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'
+            }">
+              <i class="${isCorrect ? 'ph-bold ph-check' : 'ph-bold ph-x'} mr-1"></i>
+              Soal #${idx + 1} • ${isCorrect ? 'Benar (+2 poin)' : (userChoice === null ? 'Tidak Dijawab' : 'Salah (0 poin)')}
+            </span>
+            <span class="text-xs text-slate-400 font-medium">${q.topic}</span>
+          </div>
+
+          <p class="text-sm sm:text-base font-bold text-slate-900 mb-4">${q.question}</p>
+
+          <div class="space-y-2 mb-4">
+            ${optionsHtml}
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700">
+            <div class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 text-indigo-700">
+              <i class="ph-bold ph-lightbulb"></i> Pembahasan:
+            </div>
+            <p class="leading-relaxed text-slate-600">${q.explanation}</p>
+          </div>
+        `;
+
+        reviewList.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
